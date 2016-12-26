@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<string> fizzBuzz(int n) {
+        vector<string> res(0,"");
+        for(int i=1;i<=n;i++){
+            int three = !(i%3);
+            int five = !(i%5);
+            res.push_back(three ? 
+                (five? "FizzBuzz" : "Fizz") :
+                (five? "Buzz" : to_string(i))
+                );
+        }
+        return res;
+    }
+};
