@@ -1,0 +1,6 @@
+class Solution {
+public:
+    int getSum(int a, int b) {
+        return b? getSum(a^b, (a&b)<<1):a;//不进位的用异或捕捉，进位的用与操作捕捉（记得移位）。
+    }
+};
