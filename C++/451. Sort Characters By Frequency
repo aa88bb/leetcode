@@ -1,0 +1,19 @@
+class Solution {  
+public:  
+    string frequencySort(string s) {  
+        int len = s.size();
+        vector<string> vec(len+1,"");
+        unordered_map<char, int> hash;
+        for(int i=0;i<len;i++){
+            hash[s.at(i)]++;
+        }
+        for(auto var : hash){
+            vec[var.second].append(var.second, var.first);
+        }
+        string ss="";
+        for(int i=len;i>=0;i--){
+            ss += vec[i];
+        }
+        return ss;
+    }  
+};   
