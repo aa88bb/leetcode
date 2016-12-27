@@ -1,0 +1,51 @@
+class Solution {
+public:
+    vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people) {
+        vector<array<int,3> > num(people.size());
+        for(int i=0;i<people.size();i++){
+            num[i][0] = people[i].first;
+            num[i][1] = people[i].second;
+            num[i][2] = people[i].second;
+        }
+        vector<pair<int, int>> queue;
+        while(num.size()){
+            pair<int, int> var = find(num);//每次寻找k为0的所有元素中，h最小的元素
+            queue.push_back(var);//将该元素插入要构造的数组
+            adjust(num, queue);//调整原数组
+        }
+        return queue;
+    }
+    pair<int, int> find(vector<array<int,3> >& num){//寻找k为0的所有元素中，h最小的元素
+        int erase = 0;
+        int min_h = 1;
+        int min_k = 1;
+        for(int i=0;i<num.size();i++){//找到第一个k为0的元素，并把它的h记为min_h
+            if(num[i][2]==0){
+                min_h = num[i][0];
+                min_k = num[i][1];
+                erase = i;
+                break;
+            }
+        }
+        for(int i=0;i<num.size();i++){//找到k为0的所有元素中，h最小的元素
+            if(num[i][2]==0 && min_h>num[i][0]){
+                min_h = num[i][0];   
+                min_k = num[i][1];
+                erase = i;
+            }
+        }
+        num.erase(num.begin()+erase);//把这个元素从原来的数组中抹去
+        pair<int, int> p;
+        p.first = min_h;
+        p.second = min_k;
+        return p;//把这个元素传出去
+    }
+    void adjust(vector<array<int,3> >& num, vector<pair<int, int>>& queue){//扫描num中剩余的元素，如果queue中有比它大的，k就减一（原k保留作为备份，用第三位做运算）
+        for(int i=0;i<num.size();i++){
+            for(int j=0;j<queue.size();j++){
+                if(num[i][0]<=queue[j].first)
+                    num[i][2]--;
+            }
+        }
+    }
+};
