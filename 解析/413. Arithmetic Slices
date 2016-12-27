@@ -1,0 +1,72 @@
+A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.
+
+For example, these are arithmetic sequence:
+
+>1, 3, 5, 7, 9
+
+>7, 7, 7, 7
+
+>3, -1, -5, -9
+
+The following sequence is not arithmetic.
+
+>1, 1, 2, 5, 7
+
+A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 <= P < Q < N.
+
+A slice (P, Q) of array A is called arithmetic if the sequence:
+A[P], A[p + 1], ..., A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 < Q.
+
+The function should return the number of arithmetic slices in the array A.
+
+
+Example:
+
+>A = [1, 2, 3, 4]
+
+>return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.
+
+### 翻译
+
+如果一列数至少由3个数组成且这些数两两之间差值相等，那么它被称之为arithmetic（Arithmetic progression 等差数列）。
+
+例如，这些是等差数列：
+
+>1, 3, 5, 7, 9
+
+>7, 7, 7, 7
+
+>3, -1, -5, -9
+
+下面的不是等差数列。
+
+>1, 1, 2, 5, 7
+
+以0为起始的数组A包含N个给定的数。这个数组A切片是指任何整数序列(P,Q)，0 <= P < Q < N。
+
+如果A[P], A[p + 1], ..., A[Q - 1], A[Q] 是等差数列，那么数组A切片(P,Q)被称为等差数列。特别地，这意味着 P + 1 < Q.
+
+函数必须返回数组A中的等差数列切片的个数。
+
+例如：
+
+>A = [1, 2, 3, 4]
+
+>return: 3, 因为有三个切片在A中: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] 他自己.
+
+
+### 思路
+
+这道题其实蛮简单的，一个等差数列S所包含的切片数是`S = 1+ $\cdots$ + (N-2)`，其中N是S的数组长度。例如：长度为4的S=1+2=3;长度为5的S=1+2+3=6。
+
+如果两个等差数列的公差不相等，那么这两个等差数列就是互相孤立的，我们所要做的就是在不同的片之间，更换公差。
+
+
+
+
+
+
+
+
+
+
