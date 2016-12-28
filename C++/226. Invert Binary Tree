@@ -1,0 +1,31 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {//无非就是递归
+        
+        if(root->left || root->right){
+            swap(root->left, root->right);//可以用C++自带的swap,在algrithm lib里面
+            if(root->right){
+                invertTree(root->right);   
+            }
+            if(root->left){
+                invertTree(root->left);
+            }
+            
+        }
+        return root;
+    }
+    void swap(TreeNode*& a, TreeNode*& b){
+        TreeNode* temp = a;
+        a = b;
+        b =temp;
+    }
+};

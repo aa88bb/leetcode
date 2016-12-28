@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        int mask = 0;
+        int count=0;
+        int A=0;
+        int B=0;
+        vector<int> ab;
+        for(auto n : nums){
+            mask ^= n;
+        }
+        while(!(mask&1)){
+            mask >>= 1;
+            count++;
+        }
+        for(auto n : nums){
+            if((n>>count)&1){
+                A ^= n;
+            }else
+                B ^= n;
+        }
+        ab.push_back(A);
+        ab.push_back(B);
+        return ab;
+    }
+};

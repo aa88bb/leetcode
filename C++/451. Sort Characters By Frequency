@@ -1,6 +1,6 @@
 class Solution {  
 public:  
-    string frequencySort(string s) {  
+    string frequencySort(string s) {  //用hash表存好字符和其数值的pair
         int len = s.size();
         vector<string> vec(len+1,"");
         unordered_map<char, int> hash;
@@ -8,7 +8,7 @@ public:
             hash[s.at(i)]++;
         }
         for(auto var : hash){
-            vec[var.second].append(var.second, var.first);
+            vec[var.second].append(var.second, var.first);//按数值排序，数值相同的字符衔接在一起
         }
         string ss="";
         for(int i=len;i>=0;i--){
