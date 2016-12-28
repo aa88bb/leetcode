@@ -1,4 +1,4 @@
-class Solution {
+class Solution {//这题的诀窍在于，理解n-1个数+1，就相当于一个数-1，这对于这组数最后趋同的作用是一样的。
 public:
     int minMoves(vector<int>& nums) {
         int count=0;
