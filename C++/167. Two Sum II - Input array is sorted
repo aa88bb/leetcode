@@ -1,0 +1,18 @@
+class Solution {//主要注意时间复杂度要求o(n)，想一下怎么扫一遍就得到index
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        vector<int> index(2,0);
+        for(int i=0, j=numbers.size()-1;i<numbers.size()-1 && j>i;){//用两个指针，从头和尾一起向中间靠拢，（有序的队列一般都这样）
+            if(numbers[i]+numbers[j]<target)
+                i++;
+            if(numbers[i]+numbers[j]>target)
+                j--;
+            if(numbers[i]+numbers[j]==target){
+                index[0]=i+1;
+                index[1]=j+1;
+                return index;
+            }
+        }
+        return index;
+    }
+};
