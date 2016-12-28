@@ -1,0 +1,14 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {//冒泡操作，一个数前面有0，就不断前移（swap操作）
+        for(int i=0;i<nums.size();i++){
+            if(nums.at(i)==0)
+                continue;
+            int j=i;
+            while(j-1>=0 && nums[j-1]==0){
+                swap(nums[j-1],nums[j]);
+                j--;
+            }
+        }
+    }
+};
