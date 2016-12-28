@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {//这一题注意0就行了
+        int product = 1;
+        int flag=0;
+        int index=0;
+        vector<int> vec;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==0){
+                flag++;
+                index=i;
+            }
+        }
+        if(flag>=2){//多于两个0，就会导致乘积全为0
+            vector<int> vec1(nums.size(),0);
+            vec=vec1;
+            return vec;
+        }
+        if(flag==1){//只有一个0，其它位置全是0，本位置不为0
+            vector<int> vec1(nums.size(),0);
+            for(int i=0;i<nums.size();i++){
+                if(i==index)continue;
+                product *= nums[i];
+            }
+            vec1[index]=product;
+            return vec1;
+        }
+        for(int i=0;i<nums.size();i++){
+            product *= nums[i];
+        }
+        for(int i=0;i<nums.size();i++){
+            vec.push_back(product/nums[i]);
+        }
+        return vec;
+    }
+};
