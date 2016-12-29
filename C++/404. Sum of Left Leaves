@@ -1,0 +1,26 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int sumOfLeftLeaves(TreeNode* root) {//考察递归，先统计自己的左叶节点，然后加上左子树和右子树统计出的左叶节点。
+        int count=0;
+        if(root){
+            TreeNode* left = root->left;
+            TreeNode* right = root->right;
+            if(left && (!left->left && !left->right))//如果左边不为空，且左边的节点没有左右孩子（也就是叶节点）（也就代表这是左叶节点）
+                count += left->val ;
+
+            count += sumOfLeftLeaves(left);//递归，上报左边的数
+            count += sumOfLeftLeaves(right);//上报右边的数
+
+        }
+        return count;
+    }
+};
