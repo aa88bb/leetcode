@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_map<int, int> hash1;
+        unordered_map<int, int> hash2;
+        vector<int> vec;
+        for(auto n : nums1){
+            hash1[n]++;
+        }
+        for(auto n : nums2){
+            hash2[n]++;
+        }
+        for(auto var : hash1){
+            if(hash2[var.first]!=0)
+                vec.push_back(var.first);
+        }
+        return vec;
+    }
+};
