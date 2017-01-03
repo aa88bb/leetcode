@@ -1,0 +1,12 @@
+class Solution {//从低点买进，高点卖出，然后把所得的钱全加起来就行了（这就是最大收益）
+public:
+    int maxProfit(vector<int>& prices) {
+        int count=0;
+        for(int i=1;i<prices.size();i++){
+            if(prices[i]-prices[i-1]>0){
+                count += prices[i]-prices[i-1];
+            }
+        }
+        return count;
+    }
+};
