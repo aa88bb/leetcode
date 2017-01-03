@@ -7,8 +7,10 @@
  * };
  */
 class Solution {
+//简单的链表删除操作，这里是无法得到node的前驱的，所以你无法直接把node的前驱指向node的后继，
+//小技巧：把node后面的结点复制到node，然后删除node后面的结点
 public:
-    void deleteNode(ListNode* node) {
+    void deleteNode(ListNode* node) {//目的：删除node
         if(node==NULL)
             return ;
         node->val = node->next->val;
