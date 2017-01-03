@@ -1,0 +1,16 @@
+class Solution {
+//先遍历一遍字符串，用hashmap统计出每个字符的次数，
+//然后又遍历一遍字符串，按hashmap找出第一个只出现一次的字符
+public:
+    int firstUniqChar(string s) {
+        unordered_map<char, int> hash;
+        for(auto n:s){
+            hash[n]++;
+        }
+        for(int i=0;i<s.size();i++){
+            if(hash[s.at(i)]==1)
+                return i;
+        }
+        return -1;
+    }
+};
