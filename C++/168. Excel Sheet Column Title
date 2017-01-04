@@ -1,0 +1,18 @@
+class Solution {
+public:
+    string convertToTitle(int n) {//辗转相除法，26进制，要注意的一点是这里是从1数到26，并不是从0数到25
+        string buffer="";
+        while((n-1)/26>0){//要注意的一点是这里是从1数到26，并不是从0数到25，所以这里用n-1做判断，这样Z也就是26不会进这个循环
+            buffer += (n-1)%26 + 'A';
+            n = (n-1)/26;//从1开始数，就要先-1再除
+        }
+        buffer += (n-1)%26 + 'A';
+        cout << buffer << endl;
+        for(int i=0;i<buffer.size()/2;i++){
+            char temp = buffer.at(i);
+            buffer.at(i) = buffer.at(buffer.size()-1-i);
+            buffer.at(buffer.size()-1-i) =temp;
+        }
+        return buffer;
+    }
+};

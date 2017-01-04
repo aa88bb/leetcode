@@ -1,0 +1,15 @@
+class Solution(object):
+    def convertToTitle(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        buffer = ""
+        while ( n -1 ) // 26 >0:
+            buffer += chr((n-1)%26 + ord('A'))
+            n = (n-1) // 26
+        buffer += chr(( n -1 ) %26 + ord('A'))
+        l=list(buffer)//为了能使用Python标准库中的reverse，先转成list
+        l.reverse()
+        buffer = "".join(l)//然后再join()，转成字符串
+        return buffer
