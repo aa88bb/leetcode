@@ -1,0 +1,11 @@
+class Solution(object):
+    def titleToNumber(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        count = 0
+        for n in s:
+            count = count * 26 + ord(n) - ord('A') + 1
+        return count
+        
