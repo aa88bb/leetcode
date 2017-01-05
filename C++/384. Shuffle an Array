@@ -1,0 +1,28 @@
+class Solution {//用排列组合的思想即可，第一个数可以放len个位置，第二个数能放len-1个位置。
+    vector<int> nums;
+    vector<int> output;
+public:
+    Solution(vector<int> nums): nums(nums), output(nums) {}
+
+    /** Resets the array to its original configuration and return it. */
+    vector<int> reset() {
+        return output = nums;
+    }
+
+    /** Returns a random shuffling of the array. */
+    vector<int> shuffle() {
+        int len = output.size();
+        for(int i=0;i<len;i++){
+            int j = rand()%(len-i);
+            swap(output[i], output[i+j]);
+        }
+        return output;
+    }
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(nums);
+ * vector<int> param_1 = obj.reset();
+ * vector<int> param_2 = obj.shuffle();
+ */
