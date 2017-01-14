@@ -1,0 +1,14 @@
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        count=flag=0
+        c = collections.Counter(s)
+        for i in c:
+            count += (c[i]/2)*2
+            if c[i]%2 > 0:
+                flag=1
+        return count+flag
+        
