@@ -1,0 +1,15 @@
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        max=nums[0]
+        count1=0
+        count2=0
+        for i in range(len(nums)+1):
+            count1 += i
+        for i in nums:
+            count2 += i
+        return count1-count2
+        
